@@ -12,12 +12,7 @@ const register = async (req, res) => {
     }
 
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        const savedUser = await db.users.create({
-            username,
-            email,
-            password: hashedPassword,
-        });
+        const savedUser = await createUser(username, email, password);
         console.log("Saved user:", savedUser);
         return res.status(201).json({ message: 'User registered successfully', user: savedUser });
     } catch (error) {
