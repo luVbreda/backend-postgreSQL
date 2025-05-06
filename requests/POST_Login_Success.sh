@@ -1,5 +1,5 @@
 curl --request POST \
-    --url 'https://backtest.lucasbreda.me/users/login' \
+    --url 'https://backend.postgresql.lucasbreda.me/users/login' \
     --header 'Content-Type: application/json' \
     --data '{
         "email": "johndoe@example.com",
