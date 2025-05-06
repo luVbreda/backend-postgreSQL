@@ -1,15 +1,11 @@
 import bcrypt from 'bcryptjs';
-import User from '../models/User.js';
+import db from "../models/index.js";
 
 export const createUser = async (username, email, password) => {
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    const savedUser = await User.create({
+    const hashedPassword = await bcrypt.hash(password, 10);
+    return db.users.create({
         username,
         email,
         password: hashedPassword,
     });
-
-    return savedUser;
 };
